@@ -29,7 +29,8 @@ class DatabaseSeeder extends Seeder
             $banner_seed[] = [
               'title' => 'Tiêu đề banner '.$i,
                 'desc' => 'Mô tả banner '.$i,
-                'img' => 'banner-01.jpg',
+                'img' => 'slide-02.jpg',
+                'thumb_img' => 'thumb-03.jpg',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
@@ -39,6 +40,7 @@ class DatabaseSeeder extends Seeder
                 'password' =>  Hash::make('123456'),
                  'name' => 'họ và tên '.$i,
                 'address' => 'Địa chỉ '.$i,
+                'avatar' => '1.jpg',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];

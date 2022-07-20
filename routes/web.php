@@ -22,6 +22,13 @@ Route::get('/login',['as' => 'login','uses' =>'\App\Http\Controllers\Auth\LoginC
 Route::post('/login',['as' => 'login','uses' =>'\App\Http\Controllers\Auth\LoginController@postLogin']);
 
 Route::middleware(['auth'])->group(function (){
+    Route::controller(\App\Http\Controllers\CategoryController::class)->group(function () {
+        Route::get('/categories','index');
+        Route::get('/categories/create','create');
+    });
     Route::get('/admin/dashboard','App\Http\Controllers\DashboardController@index');
     Route::get('/products/create','App\Http\Controllers\ProductController@create');
+    Route::get('/users/create','App\Http\Controllers\UserController@create');
+    Route::get('/banners/create','App\Http\Controllers\BannerController@create');
+    Route::get('/vouchers/create','App\Http\Controllers\VoucherController@create');
 });

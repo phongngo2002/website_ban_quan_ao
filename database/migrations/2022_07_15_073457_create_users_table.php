@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('name');
             $table->string('address');
+            $table->string('avatar');
             $table->integer('role_id')->default(1);
             $table->integer('status')->default(0);
             $table->timestamps();

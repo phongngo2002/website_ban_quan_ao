@@ -19,13 +19,21 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="sidebar-item ">
+            <li class="sidebar-item has-sub">
                 <a href="index.html" class='sidebar-link'>
                     <i class="fa-solid fa-list"></i>
                     <span>Danh mục sản phẩm</span>
                 </a>
+                <ul class="submenu">
+                    <li class="submenu-item">
+                        <a href="{{url('categories')}}">Tất cả danh mục</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="{{url('categories/create')}}">Thêm mới danh mục</a>
+                    </li>
+                </ul>
             </li>
-            <li class="sidebar-item  has-sub">
+            <li class="sidebar-item has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="fa-solid fa-box-open"></i>
                     <span>Sản phẩm</span>
@@ -58,15 +66,23 @@
                         <a href="component-alert.html">Tất cả người dùng</a>
                     </li>
                     <li class="submenu-item ">
-                        <a href="component-badge.html">Thêm người dùng</a>
+                        <a href="{{url('users/create')}}">Thêm người dùng</a>
                     </li>
                 </ul>
             </li>
-            <li class="sidebar-item ">
+            <li class="sidebar-item has-sub">
                 <a href="index.html" class='sidebar-link'>
                     <i class="fa-solid fa-images"></i>
                     <span>Banner</span>
                 </a>
+                <ul class="submenu ">
+                    <li class="submenu-item ">
+                        <a href="component-alert.html">Tất cả banner</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a href="{{url('banners/create')}}">Thêm mới banner</a>
+                    </li>
+                </ul>
             </li>
             <li class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
@@ -78,7 +94,7 @@
                         <a href="component-alert.html">Tất cả ưu đãi</a>
                     </li>
                     <li class="submenu-item ">
-                        <a href="component-badge.html">Thêm mới ưu đãi</a>
+                        <a href="{{url('vouchers/create')}}">Thêm mới ưu đãi</a>
                     </li>
                 </ul>
             </li>
