@@ -23,7 +23,6 @@ class DatabaseSeeder extends Seeder
         $order_seed = [];
         $product_order_detail_seed = [];
         $product_seed = [];
-        $product_category_detail_seed = [];
         $category_seed = [];
         for($i = 1 ; $i <= 10 ; $i++){
             $banner_seed[] = [
@@ -54,9 +53,15 @@ class DatabaseSeeder extends Seeder
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
+            $order_code = '#0';
+            if($i < 10){
+                $order_code.='0'.$i;
+            }else{
+                $order_code.=$i;
+            }
 
             $order_seed[] = [
-              'order_code' => '#0'.$i < 10 ? '0' : '' . $i,
+              'order_code' => $order_code,
                 'email' => 'nguoimua'.$i.'@gmail.com',
                 'customer_name' => 'Họ và tên '.$i,
                 'phone_number' => '0325500080',
@@ -82,24 +87,19 @@ class DatabaseSeeder extends Seeder
                 'short_desc' => 'Mô tả ngắn '.$i,
                 'img' => 'product-04.jpg',
                 'sizes' => '["X","L","XL"]',
-                "colors" => '[{"code":"#123123","color_name":"\u0110\u1ecf"},{"code":"#123123","color_name":"\u0110\u1ecf"}]',
+                "colors" => '["Xanh","Đỏ","Tím","Vàng"]',
                 'desc' => 'Mô tả',
                 'weight' => '0,6 kg',
                 'dimensions' => '110 x 33 x 100 cm',
                 'materials' => '60% cotton',
-                'tag' => '["Fashion,Lifestyle,Denim]',
+                'tag' => '["Fashion","Lifestyle","Denim"]',
                 'photo_gallery' => '["product-detail-02.jpg","product-detail-03","product-detail-01.jpg"]',
                 'in_stock' => 100,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ];
-
-            $product_category_detail_seed[] = [
-                'product_id' => 1,
                 'category_id' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
+
 
             $category_seed[] = [
                 'title' => 'Tiêu đề '.$i,
@@ -115,7 +115,6 @@ class DatabaseSeeder extends Seeder
         DB::table('orders')->insert($order_seed);
         DB::table('product_order_detail')->insert($product_order_detail_seed);
         DB::table('products')->insert($product_seed);
-        DB::table('product_category_detail')->insert($product_category_detail_seed);
         DB::table('categories')->insert($category_seed);
     }
 }

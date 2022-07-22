@@ -6,21 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Category extends Model
+class Banner extends Model
 {
     use HasFactory;
 
-    protected $table = 'categories';
+    protected $table = 'banners';
 
-    protected $fillable = ['id','title','img','status'];
+    protected $fillable = ['id','title','desc','img','thumb_img'];
 
-    public function loadListWithPager($pram = []){
+    public function loadListWithPagers($prams = []){
         $query = DB::table($this->table)
-                ->select($this->fillable)
-                ->get();
+            ->select($this->fillable)
+            ->paginate(10);
 
         return $query;
     }
-
-
 }

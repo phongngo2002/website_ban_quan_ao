@@ -9,7 +9,7 @@
                 <tr>
                     <th>#</th>
                     <th>Tên danh mục</th>
-                    <th><button class="btn btn-primary"><a href="{{url('create')}}" class="text-white">Thêm mới</a></button></th>
+                    <th><button class="btn btn-primary"><a href="{{url('categories/create')}}" class="text-white">Thêm mới</a></button></th>
                 </tr>
         </thead>
 

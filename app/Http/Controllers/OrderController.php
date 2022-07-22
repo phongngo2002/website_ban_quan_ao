@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Banner;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
-class BannerController extends Controller
+class OrderController extends Controller
 {
     //
     private $v;
@@ -16,14 +16,9 @@ class BannerController extends Controller
     }
 
     public function index(Request $request){
-        $model = new Banner();
+        $model = new Order();
         $this->v['list'] = $model->loadListWithPagers($request->all());
-        return view('admin.banner.list',$this->v);
+        return view('admin.order.list',$this->v);
     }
-
-    public function create(){
-        return view('admin.banner.add_form',[]);
-    }
-
 
 }

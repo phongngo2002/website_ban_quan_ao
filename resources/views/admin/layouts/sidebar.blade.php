@@ -40,7 +40,7 @@
                 </a>
                 <ul class="submenu ">
                     <li class="submenu-item ">
-                        <a href="component-alert.html">Tất cả sản phẩm</a>
+                        <a href="{{url('products')}}">Tất cả sản phẩm</a>
                     </li>
                     <li class="submenu-item ">
                         <a href="{{url('products/create')}}">Thêm mới sản phẩm</a>
@@ -51,7 +51,7 @@
                 </ul>
             </li>
             <li class="sidebar-item ">
-                <a href="index.html" class='sidebar-link'>
+                <a href="{{url('orders')}}" class='sidebar-link'>
                     <i class="fa-solid fa-book"></i>
                     <span>Đơn hàng</span>
                 </a>
@@ -63,7 +63,7 @@
                 </a>
                 <ul class="submenu ">
                     <li class="submenu-item ">
-                        <a href="component-alert.html">Tất cả người dùng</a>
+                        <a href="{{url('users')}}">Tất cả người dùng</a>
                     </li>
                     <li class="submenu-item ">
                         <a href="{{url('users/create')}}">Thêm người dùng</a>
@@ -77,7 +77,7 @@
                 </a>
                 <ul class="submenu ">
                     <li class="submenu-item ">
-                        <a href="component-alert.html">Tất cả banner</a>
+                        <a href="{{url('banners')}}">Tất cả banner</a>
                     </li>
                     <li class="submenu-item ">
                         <a href="{{url('banners/create')}}">Thêm mới banner</a>
@@ -91,7 +91,7 @@
                 </a>
                 <ul class="submenu ">
                     <li class="submenu-item ">
-                        <a href="component-alert.html">Tất cả ưu đãi</a>
+                        <a href="{{url('vouchers')}}">Tất cả ưu đãi</a>
                     </li>
                     <li class="submenu-item ">
                         <a href="{{url('vouchers/create')}}">Thêm mới ưu đãi</a>

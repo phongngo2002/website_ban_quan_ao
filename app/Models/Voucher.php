@@ -6,21 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Category extends Model
+class Voucher extends Model
 {
     use HasFactory;
 
-    protected $table = 'categories';
+    protected $table = 'vouchers';
+    protected $fillable = ['id','title','discount','code','start_time','end_time'];
 
-    protected $fillable = ['id','title','img','status'];
-
-    public function loadListWithPager($pram = []){
+    public function loadListWithPagers($prams = []){
         $query = DB::table($this->table)
                 ->select($this->fillable)
-                ->get();
+            ->paginate(10);
 
-        return $query;
+         return $query;
     }
-
-
 }

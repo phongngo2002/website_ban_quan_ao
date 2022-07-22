@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('photo_gallery');
             $table->integer('in_stock');
             $table->integer('status')->default(0);
+            $table->integer('category_id');
             $table->timestamps();
         });
     }

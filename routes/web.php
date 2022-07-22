@@ -25,10 +25,30 @@ Route::middleware(['auth'])->group(function (){
     Route::controller(\App\Http\Controllers\CategoryController::class)->group(function () {
         Route::get('/categories','index');
         Route::get('/categories/create','create');
+        Route::get('/categories/create','save_create');
+    });
+    Route::controller(\App\Http\Controllers\VoucherController::class)->group(function () {
+        Route::get('/vouchers','index');
+        Route::get('/vouchers/create','create');
+    });
+    Route::controller(\App\Http\Controllers\BannerController::class)->group(function () {
+        Route::get('/banners','index');
+        Route::get('/banners/create','create');
+    });
+    Route::controller(\App\Http\Controllers\UserController::class)->group(function () {
+        Route::get('/users','index');
+        Route::get('/users/create','create');
+    });
+    Route::controller(\App\Http\Controllers\ProductController::class)->group(function () {
+        Route::get('/products','index');
+        Route::get('/products/create','create');
+    });
+    Route::controller(\App\Http\Controllers\OrderController::class)->group(function () {
+        Route::get('/orders','index');
     });
     Route::get('/admin/dashboard','App\Http\Controllers\DashboardController@index');
-    Route::get('/products/create','App\Http\Controllers\ProductController@create');
-    Route::get('/users/create','App\Http\Controllers\UserController@create');
-    Route::get('/banners/create','App\Http\Controllers\BannerController@create');
-    Route::get('/vouchers/create','App\Http\Controllers\VoucherController@create');
+
+
+
+
 });
