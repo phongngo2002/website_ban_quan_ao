@@ -97,20 +97,20 @@
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="{{asset('client/images/gallery-07.jpg')}}" data-lightbox="gallery"
-							style="background-image: url('{{asset('client/images/gallery-07.jpg')}}');"></a>
+							<a class="item-gallery bg-img1" href="{{asset('client/images/230b502bf6e91ab743f8.jpg')}}" data-lightbox="gallery"
+							style="background-image: url('{{asset('client/images/230b502bf6e91ab743f8.jpg')}}');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="{{asset('client/images/gallery-08.jpg')}}" data-lightbox="gallery"
-							style="background-image: url('{{asset('client/images/gallery-08.jpg')}}');"></a>
+							<a class="item-gallery bg-img1" href="{{asset('client/images/ba1f7ef9eb45041b5d54.jpg')}}" data-lightbox="gallery"
+							style="background-image: url('{{asset('client/images/ba1f7ef9eb45041b5d54.jpg')}}');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="{{asset('client/images/gallery-09.jpg')}}" data-lightbox="gallery"
-							style="background-image: url('{{asset('client/images/gallery-09.jpg')}}');"></a>
+							<a class="item-gallery bg-img1" href="{{asset('client/images/PH18006.jpg')}}" data-lightbox="gallery"
+							style="background-image: url('{{asset('client/images/PH18006.jpg')}}');"></a>
 						</div>
 					</div>
 				</div>

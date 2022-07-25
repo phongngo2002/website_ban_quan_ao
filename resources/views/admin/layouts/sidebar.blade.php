@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li class="sidebar-item has-sub">
-                <a href="index.html" class='sidebar-link'>
+                <a href="{{url('categories')}}" class='sidebar-link'>
                     <i class="fa-solid fa-list"></i>
                     <span>Danh mục sản phẩm</span>
                 </a>
@@ -34,7 +34,7 @@
                 </ul>
             </li>
             <li class="sidebar-item has-sub">
-                <a href="#" class='sidebar-link'>
+                <a href="{{url('products')}}" class='sidebar-link'>
                     <i class="fa-solid fa-box-open"></i>
                     <span>Sản phẩm</span>
                 </a>
@@ -57,7 +57,7 @@
                 </a>
             </li>
             <li class="sidebar-item has-sub">
-                <a href="index.html" class='sidebar-link'>
+                <a href="{{url('users')}}" class='sidebar-link'>
                     <i class="fa-solid fa-user"></i>
                     <span>Người dùng</span>
                 </a>
@@ -71,7 +71,7 @@
                 </ul>
             </li>
             <li class="sidebar-item has-sub">
-                <a href="index.html" class='sidebar-link'>
+                <a href="{{url('banners')}}" class='sidebar-link'>
                     <i class="fa-solid fa-images"></i>
                     <span>Banner</span>
                 </a>
@@ -85,7 +85,7 @@
                 </ul>
             </li>
             <li class="sidebar-item  has-sub">
-                <a href="#" class='sidebar-link'>
+                <a href="{{url('vouchers')}}" class='sidebar-link'>
                     <i class="fa-solid fa-gift"></i>
                     <span>Ưu đãi</span>
                 </a>

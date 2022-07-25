@@ -1,6 +1,5 @@
 let colors = [];
 const btn = document.getElementById('btnAdd');
-const code_z = document.getElementById('code');
 const color_name_z = document.getElementById('color_name');
 const preview = document.getElementById('preview');
 const tag_z = document.getElementById('tag_z');
@@ -15,10 +14,33 @@ const previewImgs = document.getElementById('previewImgs');
 const btnAddSizes = document.getElementById('btnAddSizes');
 const valueSize = document.getElementById('valueSize');
 const previewSize = document.getElementById('previewSize');
+const information = document.getElementById('dimensions');
+const sizes  = document.getElementById('sizes');
 let temp1 = null;
 let temp2 = null;
 let arrsizes = [];
 let arrTags = [];
+
+function addAndRender(data,option = 1){
+    let string = JSON.stringify(data);
+    if(option == 1){
+        document.getElementById('colors').value = string;
+    }
+    else if(option == 2){
+        document.getElementById('sizes').value = string;
+    }
+    else{
+        document.getElementById('tag').value = string;
+    }
+}
+
+function getInformation(){
+    let long = document.getElementById('long').value;
+    let width = document.getElementById('width').value;
+    let height = document.getElementById('height').value;
+
+    information.value = `${long}x${width}x${height}`+" cm";
+}
 
 function reset(data) {
     for (let i of data) {
@@ -36,13 +58,8 @@ function render(data) {
         document.getElementById('title-ul').innerHTML = 'Bạn chưa thêm màu nào cho sản phẩm này';
     }
     for (let obj of data) {
-        let code = `style="background-color: ${obj.code}"`;
         preview.innerHTML += `
-                <li class="list-group-item">
-  <input class="text-xl form-check-input me-1" ${code} type="checkbox">
-                                                ${obj.color_name}
-<i class="fa-solid fa-trash-can mt-2 text-danger removeColor" style="float: right;cursor: pointer" data-id="${obj.code}"></i>
-                                            </li>
+                <li class="list-group-item">${obj}<i class="fa-solid fa-circle-xmark m-2 removeColor" style="float: right;" data-id="${obj}"></i></li>
                 `;
     }
 
@@ -51,17 +68,17 @@ function render(data) {
         const {id} = item.dataset;
 
         item.addEventListener('click', function () {
-            data = data.filter(item => item.code != id);
-            render(data);
+            colors = data.filter(item => item != id);
+            render(colors);
         })
 
     });
-    reset([code_z, color_name_z]);
+    reset([color_name_z]);
+    addAndRender(colors);
 }
 
-render([]);
 btn.addEventListener('click', function () {
-    const obj = {code: code_z.value, color_name: color_name_z.value};
+    const obj = color_name_z.value;
     colors.push(obj);
     preview.innerHTML = '';
     render(colors);
@@ -70,6 +87,12 @@ btn.addEventListener('click', function () {
 function renderTagsOrSizes(data, element, input, option = false) {
     element.innerHTML = '';
     temp2 = null;
+    if(!option){
+        addAndRender(arrsizes,2);
+    }else{
+        addAndRender(arrTags,3);
+    }
+
     if (data.length > 0) {
         for (let s of data) {
             element.innerHTML += `<span ><i class="fa-solid fa-circle-xmark m-2 close" data-id="${s}"></i>${s}</span>`;
@@ -82,10 +105,8 @@ function renderTagsOrSizes(data, element, input, option = false) {
                 data = data.filter(item => item != id);
                 if (!option) {
                     arrsizes = data;
-                    console.log(arrsizes);
                 } else {
                     arrTags = data;
-                    console.log(arrTags);
                 }
                 renderTagsOrSizes(data, element, input, option);
             });
@@ -118,12 +139,12 @@ img.addEventListener('change', function (e) {
     previewMainImg.src = src;
     previewMainImg.style.display = 'block';
     btnUploadMainImg.style.display = 'none';
-    // btnRemoveMainImg.attributes('data-id',file.lat)
     btnRemoveMainImg.style.display = 'block';
 });
 btnRemoveMainImg.addEventListener('click', function () {
     const dt = new DataTransfer();
     img.files = dt.files;
+    console.log(img.files);
     previewMainImg.src = '';
     previewMainImg.style.display = 'none';
     btnUploadMainImg.style.display = 'block';
@@ -139,18 +160,34 @@ document.getElementById('btnNone').addEventListener('click',function (){
     document.getElementById('btnNone').style.display = 'none';
     document.getElementById('imgLength').innerHTML = '';
 });
-imgs.addEventListener('change', function (e) {
-    const files = e.target.files;
-    let count = 0;
-    for (const file of files) {
-        const src = URL.createObjectURL(file);
-        previewImgs.innerHTML += `
+let count = 0;
+function renderPhotos(data,option = 1){
+  if(option == 1){
+      for (const file of data) {
+          const src = URL.createObjectURL(file);
+          previewImgs.innerHTML += `
          <img src="${src}" style="position: relative" class="img-thumbnail">
 
         `;
-        count++;
-    }
+          count++;
+      }
+  }else{
+      for (const file of JSON.parse(data)) {
+          const src = file;
+          const path = `http://127.0.0.1:8000/storage/images/products/${src}`;
+          previewImgs.innerHTML += `
+         <img src="${path}" style="position: relative" class="img-thumbnail">
+
+        `;
+          count++;
+      }
+  }
     document.getElementById('btnAddMainImgMore').style.display = 'none';
     document.getElementById('btnNone').style.display = 'block';
     document.getElementById('imgLength').innerHTML = `${count} ảnh được chọn`;
+}
+
+imgs.addEventListener('change', function (e) {
+    const files = e.target.files;
+    renderPhotos(files);
 });

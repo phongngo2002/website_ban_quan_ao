@@ -1,12 +1,12 @@
 	<!-- Header -->
-	<header class="header-v3">
+	<header class="header-v3" id="header">
 		<!-- Header desktop -->
 		<div class="container-menu-desktop trans-03">
 			<div class="wrap-menu-desktop">
 				<nav class="limiter-menu-desktop p-l-45">
-					
-					<!-- Logo desktop -->		
-					<a href="#" class="logo">
+
+					<!-- Logo desktop -->
+					<a href="{{url('/')}}" class="logo">
 						<img src="{{asset('client/images/icons/logo-02.png')}}" alt="IMG-LOGO">
 					</a>
 
@@ -14,44 +14,34 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="index.html">Home</a>
-								<ul class="sub-menu">
-									<li><a href="index.html">Homepage 1</a></li>
-									<li><a href="home-02.html">Homepage 2</a></li>
-									<li><a href="home-03.html">Homepage 3</a></li>
-								</ul>
+								<a href="{{url('/')}}">Trang chủ</a>
 							</li>
 
 							<li>
-								<a href="product.html">Shop</a>
+								<a href="{{url('/shop')}}">Cửa hàng</a>
 							</li>
-
-							<li class="label1" data-label1="hot">
-								<a href="shoping-cart.html">Features</a>
+							<li>
+								<a href="blog.html">Tin tức</a>
 							</li>
 
 							<li>
-								<a href="blog.html">Blog</a>
+								<a href="about.html">Giới thiệu</a>
 							</li>
 
 							<li>
-								<a href="about.html">About</a>
-							</li>
-
-							<li>
-								<a href="contact.html">Contact</a>
+								<a href="contact.html">Liên hệ</a>
 							</li>
 						</ul>
-					</div>	
+					</div>
 
 					<!-- Icon header -->
-					<div class="wrap-icon-header flex-w flex-r-m h-full">							
+					<div class="wrap-icon-header flex-w flex-r-m h-full">
 						<div class="flex-c-m h-full p-r-25 bor6">
 							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
 								<i class="zmdi zmdi-shopping-cart"></i>
 							</div>
 						</div>
-							
+
 						<div class="flex-c-m h-full p-lr-19">
 							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
 								<i class="zmdi zmdi-menu"></i>
@@ -59,12 +49,12 @@
 						</div>
 					</div>
 				</nav>
-			</div>	
+			</div>
 		</div>
 
 		<!-- Header Mobile -->
 		<div class="wrap-header-mobile">
-			<!-- Logo moblie -->		
+			<!-- Logo moblie -->
 			<div class="logo-mobile">
 				<a href="index.html"><img src="{{asset('client/images/icons/logo-01.png')}}" alt="IMG-LOGO"></a>
 			</div>
@@ -91,35 +81,27 @@
 		<div class="menu-mobile">
 			<ul class="main-menu-m">
 				<li>
-					<a href="index.html">Home</a>
-					<ul class="sub-menu-m">
-						<li><a href="index.html">Homepage 1</a></li>
-						<li><a href="home-02.html">Homepage 2</a></li>
-						<li><a href="home-03.html">Homepage 3</a></li>
-					</ul>
+					<a href="{{url('/')}}">Trang chủ</a>
 					<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
 					</span>
 				</li>
 
 				<li>
-					<a href="product.html">Shop</a>
+					<a href="{{url('/shop')}}">Cừa hàng</a>
+				</li>
+
+
+				<li>
+					<a href="blog.html">Tin tức</a>
 				</li>
 
 				<li>
-					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
+					<a href="about.html">Giới thiệu</a>
 				</li>
 
 				<li>
-					<a href="blog.html">Blog</a>
-				</li>
-
-				<li>
-					<a href="about.html">About</a>
-				</li>
-
-				<li>
-					<a href="contact.html">Contact</a>
+					<a href="contact.html">Liên hệ</a>
 				</li>
 			</ul>
 		</div>

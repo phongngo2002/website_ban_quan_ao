@@ -7,7 +7,7 @@
     <title>Dashboard - Mazer Admin Dashboard</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    @include('admin.layouts._css');
+    @include('admin.layouts._css')
     <link rel="shortcut icon" href="{{asset('templates/admin/images/favicon.svg')}}" type="image/x-icon">
 </head>
 

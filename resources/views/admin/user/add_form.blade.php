@@ -4,9 +4,11 @@
 
 @section('content')
     <section class="bg-light rounded-2 p-4" >
-        <form action="{{url('create')}}" method="post" enctype="multipart/form-data">
          <div class="row">
+
              <div class="col-8 shadow-sm bg-white rounded-2 p-4">
+                 <form action="" method="post" enctype="multipart/form-data">
+                     @csrf
                  <div class="form-group">
                      <label>Email</label>
                      <input class="form-control" name="email" id="email">
@@ -30,8 +32,8 @@
                  <div class="form-group">
                      <label>Chức vụ</label>
                      <select class="form-control" name="role_id" id="role_id">
-                         <option value="0">Quản trị viên</option>
-                         <option value="1">Nhân viên</option>
+                         <option value="1">Quản trị viên</option>
+                         <option value="0">Nhân viên</option>
                      </select>
                  </div>
                  <div class="form-group">
@@ -39,6 +41,7 @@
                      <input type="file" class="form-control" id="img" name="img">
                  </div>
                  <button class="btn btn-primary">Thêm mới</button>
+             </form>
              </div>
              <div class="col-4">
                  <div class="shadow-sm bg-white pb-4">
@@ -64,7 +67,7 @@
              </div>
          </div>
 
-        </form>
+
     </section>
 <script>
     const email = document.getElementById('email');

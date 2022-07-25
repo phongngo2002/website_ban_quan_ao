@@ -45,21 +45,21 @@ inputs[2].addEventListener('change',()=>{
     }
     previews[0].innerHTML = inputs[2].value;
 });
+inputs[3].addEventListener('change',()=>{
+    if(!inputs[3].value && !inputs[4].value){
+        reset(previews[3],'Thời hạn: ??/??/???? - ??/??/????');
+        return;
+    }
+    const date = new Date(inputs[3].value);
+    start_time = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
+    renderDate(start_time,end_time);
+});
 inputs[4].addEventListener('change',()=>{
-    if(!inputs[4].value && !inputs[5].value){
+    if(!inputs[3].value && !inputs[4].value){
         reset(previews[3],'Thời hạn: ??/??/???? - ??/??/????');
         return;
     }
     const date = new Date(inputs[4].value);
-    start_time = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
-    renderDate(start_time,end_time);
-});
-inputs[5].addEventListener('change',()=>{
-    if(!inputs[4].value && !inputs[5].value){
-        reset(previews[3],'Thời hạn: ??/??/???? - ??/??/????');
-        return;
-    }
-    const date = new Date(inputs[5].value);
     end_time = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
     renderDate(start_time,end_time);
 });

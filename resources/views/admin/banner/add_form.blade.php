@@ -4,16 +4,18 @@
 
 @section('content')
     <section class="bg-light rounded-2 p-4" style="position: relative;">
-        <form action="{{url('create')}}" method="post" enctype="multipart/form-data">
+
             <div class="row " style="padding-bottom: 280px">
                 <div class="col-7 shadow-sm bg-white rounded-2 p-4">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        @csrf
                     <div class="form-group">
                         <label>Tiêu đề</label>
                         <input class="form-control" name="title" id="title">
                     </div>
                     <div class="form-group">
                         <label>Mô tả</label>
-                        <textarea class="form-control" name="desc" id="desc">
+                        <textarea class="form-control" name="desc" rows="5" cols="9" id="desc">
 
                         </textarea>
                     </div>
@@ -26,6 +28,7 @@
                         <input type="file" class="form-control" id="thumb_img" name="thumb_img">
                     </div>
                     <button class="btn btn-primary">Thêm mới</button>
+                    </form>
                 </div>
                 <div class="col-5">
                     <div class="shadow-sm bg-white rounded-2 p-2" id="previewElement" style="position: relative ;display: none">
@@ -50,7 +53,7 @@
             </div>
 
 
-        </form>
+
 
     </section>
 

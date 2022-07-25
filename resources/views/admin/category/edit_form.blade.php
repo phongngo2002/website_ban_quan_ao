@@ -1,6 +1,6 @@
 @extends('admin.layouts.main');
 
-@section('title','Thêm mới danh mục');
+@section('title','Cập nhật danh mục - '.$category->title.'');
 
 @section('content')
     <style>
@@ -28,13 +28,15 @@
         <div class="row" style="padding-bottom: 440px">
 
             @csrf
-            <div class="col-9">
+            <div class="col-8">
                 <form action="" method="post" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" value="{{asset('storage/images/categories/'.$category->img)}}" id="imgOld">
+                    <input type="hidden" value="{{$category->title}}" id="oldTile">
                     <div class="shadow-sm bg-white p-4 rounded-2">
                         <div class="form-group">
                             <label>Tiêu đề</label>
-                            <input class="form-control" name="title" id="title">
+                            <input class="form-control" name="title" id="title" value="{{$category->title}}">
                         </div>
                         <div class="form-group">
                             <label class="mb-2 font-bold my-2">Ảnh sản phẩm</label>
@@ -42,16 +44,17 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary mt-2">Đăng</button>
+                    <button type="button" class="btn btn-success mt-2" id="btnReset">Reset</button>
                 </form>
             </div>
-            <div class="col-3">
+            <div class="col-4">
                 <div class="shadow-sm bg-white p-4 rounded-2">
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-5">
                             <h4 class="font-bold" id="previewTitle">Tiêu đề</h4>
                             <span style="font-size: 10px">Spring 2022</span>
                         </div>
-                        <div class="col-8">
+                        <div class="col-7">
                             <img src="" style="width: 100%" alt="Ảnh sản phẩm" id="previewImg">
                         </div>
                     </div>
@@ -77,6 +80,18 @@
             const src = URL.createObjectURL(file);
 
             previewImg.src = src;
+        });
+
+        function get() {
+            previewTitle.innerText = title.value;
+            previewImg.src = document.getElementById('imgOld').value;
+        }
+
+        get();
+        document.getElementById('btnReset').addEventListener('click', function () {
+            previewTitle.innerText = document.getElementById('oldTile').value;
+            previewImg.src = document.getElementById('imgOld').value;
+            title.value = document.getElementById('oldTile').value;
         });
     </script>
 @endsection
