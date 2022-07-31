@@ -13,13 +13,13 @@
         <ul class="menu">
             <li class="sidebar-title">Menu</li>
 
-            <li class="sidebar-item active ">
+            <li class="sidebar-item li active">
                 <a href="{{url('admin/dashboard')}}" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="sidebar-item has-sub">
+            <li class="sidebar-item has-sub li">
                 <a href="{{url('categories')}}" class='sidebar-link'>
                     <i class="fa-solid fa-list"></i>
                     <span>Danh mục sản phẩm</span>
@@ -33,7 +33,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="sidebar-item has-sub">
+            <li class="sidebar-item has-sub li">
                 <a href="{{url('products')}}" class='sidebar-link'>
                     <i class="fa-solid fa-box-open"></i>
                     <span>Sản phẩm</span>
@@ -50,13 +50,13 @@
                     </li>
                 </ul>
             </li>
-            <li class="sidebar-item ">
+            <li class="sidebar-item li">
                 <a href="{{url('orders')}}" class='sidebar-link'>
                     <i class="fa-solid fa-book"></i>
                     <span>Đơn hàng</span>
                 </a>
             </li>
-            <li class="sidebar-item has-sub">
+            <li class="sidebar-item has-sub li">
                 <a href="{{url('users')}}" class='sidebar-link'>
                     <i class="fa-solid fa-user"></i>
                     <span>Người dùng</span>
@@ -70,7 +70,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="sidebar-item has-sub">
+            <li class="sidebar-item has-sub li">
                 <a href="{{url('banners')}}" class='sidebar-link'>
                     <i class="fa-solid fa-images"></i>
                     <span>Banner</span>
@@ -84,7 +84,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="sidebar-item  has-sub">
+            <li class="sidebar-item  has-sub li">
                 <a href="{{url('vouchers')}}" class='sidebar-link'>
                     <i class="fa-solid fa-gift"></i>
                     <span>Ưu đãi</span>
@@ -98,7 +98,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="sidebar-item ">
+            <li class="sidebar-item li">
                 <a href="{{url('/')}}" class='sidebar-link'>
                     <i class="fa-solid fa-earth-africa"></i>
                     <span>Website</span>
@@ -108,3 +108,30 @@
     </div>
     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
 </div>
+<script>
+    const li = document.querySelectorAll('.li');
+
+    li.forEach((item, index) => {
+        item.children[0].addEventListener('click', () => {
+            localStorage.setItem('index', JSON.stringify(index));
+            li.forEach(ele => {
+                ele.classList.remove('active');
+            });
+            if (index == 7) {
+                localStorage.removeItem('index');
+            } else {
+                li[index].classList.add('active');
+            }
+
+
+        })
+    });
+    const index = JSON.parse(localStorage.getItem('index')) || 0;
+    if (index) {
+        li.forEach(ele => {
+            ele.classList.remove('active');
+        });
+        li[index].classList.add('active');
+    }
+</script>
+

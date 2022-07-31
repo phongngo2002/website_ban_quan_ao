@@ -47,15 +47,15 @@
                             <a href="{{url('/shop')}}">Cửa hàng</a>
                         </li>
                         <li>
-                            <a href="blog.html">Tin tức</a>
+                            <a href="{{url('/blog')}}">Tin tức</a>
                         </li>
 
                         <li>
-                            <a href="about.html">Giới thiệu</a>
+                            <a href="{{url('/about')}}">Giới thiệu</a>
                         </li>
 
                         <li>
-                            <a href="contact.html">Liên hệ</a>
+                            <a href="{{url('contact')}}">Liên hệ</a>
                         </li>
                     </ul>
                 </div>

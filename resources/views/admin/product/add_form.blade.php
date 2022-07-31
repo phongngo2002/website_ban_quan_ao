@@ -17,7 +17,7 @@
             background: white;
         }
 
-        .upload-btn-wrapper input[type=file] {
+        .upload-btn-wrapper .file {
             font-size: 100px;
             position: absolute;
             left: 0;
@@ -30,6 +30,12 @@
         }
     </style>
     <section class="bg-light  rounded-2 p-4">
+        @if($errors->all())
+            <div class="alert alert-danger alert-dismissible show fade">
+                Thêm sản phẩm thất bại.Vui lòng kiểm tra lại các trường dữ liệu
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <form action="" enctype="multipart/form-data" method="post">
             @csrf
             <div class="row">
@@ -37,7 +43,11 @@
                 <div class="col-9">
                     <div class="form-group mb-4 shadow-sm">
                         <input class="form-control" placeholder="Tên sản phẩm" name="product_name" id="product_name">
+
                     </div>
+                    @error('product_name')
+                    <p class="text-danger mt-2">{{$message}}</p>
+                    @enderror
                     <div class="form-group shadow-sm">
                         <section class="section">
                             <div class="card">
@@ -50,7 +60,9 @@
                             </div>
                         </section>
                     </div>
-
+                    @error('desc')
+                    <p class="text-danger mt-2">{{$message}}</p>
+                    @enderror
                     <div class="row">
                         <div class="form-group ">
                             <label>Dữ liệu sản phẩm</label>
@@ -84,6 +96,9 @@
                                                             <input class="form-control " name="price" id="price">
                                                         </div>
                                                     </div>
+                                                    @error('price')
+                                                    <p class="text-danger mt-2">{{$message}}</p>
+                                                    @enderror
                                                 </div>
                                                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
                                                      aria-labelledby="v-pills-profile-tab">
@@ -93,12 +108,18 @@
                                                             <input class="form-control " name="SKU" id="SKU">
                                                         </div>
                                                     </div>
+                                                    @error('SKU')
+                                                    <p class="text-danger mt-2">{{$message}}</p>
+                                                    @enderror
                                                     <div class="form-group row">
                                                         <label class="col-2">Số hàng trong kho</label>
                                                         <div class="col-10">
                                                             <input class="form-control " name="in_stock" id="in_stock">
                                                         </div>
                                                     </div>
+                                                    @error('in_stock')
+                                                    <p class="text-danger mt-2">{{$message}}</p>
+                                                    @enderror
                                                 </div>
                                                 <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
                                                      aria-labelledby="v-pills-messages-tab">
@@ -108,6 +129,9 @@
                                                             <input class="form-control " id="weight" name="weight">
                                                         </div>
                                                     </div>
+                                                    @error('weight')
+                                                    <p class="text-danger mt-2">{{$message}}</p>
+                                                    @enderror
                                                     <div class="form-group row">
                                                         <label class="col-2">Kích thước</label>
                                                         <div class="col-10">
@@ -126,6 +150,9 @@
 
                                                         </div>
                                                     </div>
+                                                    @error('dimensions')
+                                                    <p class="text-danger mt-2">{{$message}}</p>
+                                                    @enderror
                                                 </div>
                                                 <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
                                                      aria-labelledby="v-pills-settings-tab">
@@ -152,6 +179,9 @@
 
 
                                                     </ul>
+                                                    @error('colors')
+                                                    <p class="text-danger mt-2">{{$message}}</p>
+                                                    @enderror
                                                     <div class="form-group">
                                                         <input type="hidden" name="sizes" id="sizes">
                                                         <div class="row">
@@ -172,6 +202,9 @@
                                                             style="display: grid;grid-template-columns: repeat(4,1fr);max-height: 150px;overflow-y: auto;overflow-x:hidden "
                                                             id="previewSize" class="mb-2">
                                                         </div>
+                                                        @error('sizes')
+                                                        <p class="text-danger mt-2">{{$message}}</p>
+                                                        @enderror
                                                         <div class="form-group row mt-4">
                                                             <label class="col-2">Chất liệu</label>
                                                             <div class="col-10">
@@ -179,7 +212,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
+                                                    @error('materials')
+                                                    <p class="text-danger mt-2">{{$message}}</p>
+                                                    @enderror
 
                                                 </div>
                                             </div>
@@ -192,6 +227,9 @@
                             <label class="mb-2" for="short_desc">Mô tả ngắn</label>
                               <textarea class="form-control" rows="5" cols="15" name="short_desc" id="short_desc"></textarea>
                         </div>
+                        @error('short_desc')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                 </div>
                 <div class="col-3">
@@ -227,7 +265,7 @@
                         <section class="card ms-3 shadow-sm border-2 border-dark row py-2">
                             <label class="mb-2 font-bold my-2">Ảnh sản phẩm</label>
                             <div class="upload-btn-wrapper row">
-                                <img src="" id="previewMainImg" style="display: none" class="img-thumbnail">
+                                <img src="" id="previewMainImg" style="display: none">
 
                                 <button class="btnUpload btn btn-link" type="button" id="btnAddMainImg">Thiết lập ảnh
                                     sản phẩm
@@ -235,17 +273,21 @@
                                 <button class="btnUpload btn btn-link text-danger" type="button" id="btnRemoveMainImg"
                                         style="display: none">Xóa ảnh sản phẩm
                                 </button>
-                                <input type="file" name="img" id="img"/>
+                                <input type="file" name="img" id="img" class="file" />
+
                             </div>
+
                         </section>
+                        @error('img')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                         <section class="card ms-3 shadow-sm border-2 border-dark row py-2">
                            <div>
                                <label class="mb-2 font-bold my-2" style="float: left">Album hình ảnh sản phẩm</label>
                                <button class="btn text-danger" style="float: right;display: none" id="btnNone" type="button">Bỏ chọn</button>
                            </div>
                             <div class="upload-btn-wrapper row">
-                                <div id="previewImgs"
-                                     style="display: flex;flex-wrap: nowrap;overflow-x: auto;-webkit-overflow-scrolling: touch;-ms-overflow-style: -ms-autohiding-scrollbar;">
+                                <div id="previewImgs" class="row">
 
                                 </div>
 
@@ -253,9 +295,12 @@
                                     thư viện sản phẩm
                                 </button>
                                 <p id="imgLength" class="text-center"></p>
-                                <input type="file" name="photo_gallery[]" id="imgs" multiple/>
+                                <input type="file" name="photo_gallery[]" class="file" id="imgs" multiple max="" />
                             </div>
                         </section>
+                        @error('photo_gallery')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                 </div>
 

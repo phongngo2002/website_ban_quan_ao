@@ -11,21 +11,33 @@
                         @csrf
                     <div class="form-group">
                         <label>Tiêu đề</label>
-                        <input class="form-control" name="title" id="title">
+                        <input class="form-control" name="title" id="title" value="{{old('title')}}">
+                        @error('title')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Mô tả</label>
-                        <textarea class="form-control" name="desc" rows="5" cols="9" id="desc">
-
+                        <textarea class="form-control" name="desc" rows="5" cols="9" id="desc" >
+{{old('desc')}}
                         </textarea>
+                        @error('desc')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label class="mb-2 font-bold my-2">Ảnh nền</label>
                         <input type="file" class="form-control" id="img" name="img">
+                        @error('img')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label class="mb-2 font-bold my-2">Ảnh đại diện</label>
                         <input type="file" class="form-control" id="thumb_img" name="thumb_img">
+                        @error('thumb_img')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                     <button class="btn btn-primary">Thêm mới</button>
                     </form>

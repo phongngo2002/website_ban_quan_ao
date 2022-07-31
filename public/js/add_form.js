@@ -1,3 +1,5 @@
+
+
 let colors = [];
 const btn = document.getElementById('btnAdd');
 const color_name_z = document.getElementById('color_name');
@@ -166,8 +168,7 @@ function renderPhotos(data,option = 1){
       for (const file of data) {
           const src = URL.createObjectURL(file);
           previewImgs.innerHTML += `
-         <img src="${src}" style="position: relative" class="img-thumbnail">
-
+         <div class="col-4 mb-2"><img src="${src}" style="width: 100%;"></div>
         `;
           count++;
       }
@@ -176,7 +177,7 @@ function renderPhotos(data,option = 1){
           const src = file;
           const path = `http://127.0.0.1:8000/storage/images/products/${src}`;
           previewImgs.innerHTML += `
-         <img src="${path}" style="position: relative" class="img-thumbnail">
+       <div class="col-4 mb-2"><img src="${src}" style="width: 100%;"></div>
 
         `;
           count++;
@@ -191,3 +192,5 @@ imgs.addEventListener('change', function (e) {
     const files = e.target.files;
     renderPhotos(files);
 });
+
+

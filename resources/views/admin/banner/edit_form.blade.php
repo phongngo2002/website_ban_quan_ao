@@ -16,12 +16,18 @@
                     <div class="form-group">
                         <label>Tiêu đề</label>
                         <input class="form-control" name="title" id="title" value="{{$banner->title}}">
+                        @error('title')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Mô tả</label>
                         <textarea class="form-control" name="desc" rows="5" cols="9" id="desc">
 {{$banner->desc}}
                         </textarea>
+                        @error('desc')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label class="mb-2 font-bold my-2">Ảnh nền</label>
@@ -31,7 +37,7 @@
                         <label class="mb-2 font-bold my-2">Ảnh đại diện</label>
                         <input type="file" class="form-control" id="thumb_img" name="thumb_img">
                     </div>
-                    <button class="btn btn-primary">Thêm mới</button>
+                    <button class="btn btn-primary">Lưu</button>
                     <button class="btn btn-success" type="button" id="btnReset">Reset</button>
                 </form>
             </div>

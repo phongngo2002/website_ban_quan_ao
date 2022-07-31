@@ -47,7 +47,7 @@
                                     <h4 class="card-title">Mô tả chi tiết</h4>
                                 </div>
                                 <div class="card-body">
-                                    <textarea class="form-control" rows="8" cols="15" name="desc"
+                                    <textarea class="form-control" rows="15" cols="15" name="desc"
                                               id="desc">{{$product->desc}}</textarea>
                                 </div>
                             </div>
@@ -206,7 +206,7 @@
                         </div>
                         <div class="form-group">
                             <label class="mb-2" for="short_desc">Mô tả ngắn</label>
-                            <textarea class="form-control" rows="5" cols="15" name="short_desc"
+                            <textarea class="form-control" rows="10" cols="15" name="short_desc"
                                       id="short_desc">{{$product->short_desc}}</textarea>
                         </div>
                     </div>
@@ -245,7 +245,7 @@
                         <section class="card ms-3 shadow-sm border-2 border-dark row py-2">
                             <label class="mb-2 font-bold my-2">Ảnh sản phẩm</label>
                             <div class="upload-btn-wrapper row">
-                                <img src="{{asset('storage/images/products'.$product->img)}}" id="previewMainImg"
+                                <img src="{{asset('storage/images/products/'.$product->img)}}" id="previewMainImg"
                                      style="display: block" class="img-thumbnail">
 
                                 <button class="btnUpload btn btn-link" type="button" id="btnAddMainImg">Thiết lập ảnh
@@ -295,7 +295,7 @@
         const photos = document.getElementById('photo_gallery').value;
         const oldInfo = information.value;
         arrsizes = JSON.parse(oldSizes);
-        colors = oldColors;
+        colors = JSON.parse(oldColors);
         arrTags = JSON.parse(oldTags);
         renderTagsOrSizes(JSON.parse(oldSizes), previewSize, valueSize);
         render(JSON.parse(oldColors));

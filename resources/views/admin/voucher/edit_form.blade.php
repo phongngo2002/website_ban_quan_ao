@@ -66,7 +66,7 @@
             previews[0].innerText = oldTitle;
             previews[1].innerText = `Thẻ giảm giá ${oldDiscount}% cho mọi sản phẩm`;
             previews[2].innerText = 'Mã code: '+oldCode;
-            previews[3].innerText = `${start_time.getDate()}/${start_time.getMonth()}/${start_time.getFullYear()} - ${end_time.getDate()}/${end_time.getMonth()}/${end_time.getFullYear()}`;
+            previews[3].innerText = `${start_time.getDate()}/${start_time.getMonth()+1}/${start_time.getFullYear()} - ${end_time.getDate()}/${end_time.getMonth()+1}/${end_time.getFullYear()}`;
         }
     get();
         document.getElementById('btnReset').addEventListener('click',()=>{

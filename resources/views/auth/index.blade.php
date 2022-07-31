@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Mazer Admin Dashboard</title>
+    <title>Đăng nhập</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('templates/admin/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('templates/admin/vendors/bootstrap-icons/bootstrap-icons.css')}}">
@@ -77,3 +77,9 @@
 </body>
 
 </html>
+<script>
+    const index = JSON.parse(localStorage.getItem('index'));
+    if(index){
+        localStorage.removeItem('index');
+    }
+</script>

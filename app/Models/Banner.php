@@ -51,4 +51,37 @@ class Banner extends Model
 
         return $res;
     }
+
+    public function saveUpdate($params){
+        $dataUpdate = [];
+        if(empty($params['cols']['id'])){
+            return null;
+        }
+
+        foreach ($params['cols'] as $colName => $val){
+            if ($colName == 'id'){
+                continue;
+            }
+
+            if (in_array($colName,$this->fillable)){
+                $dataUpdate[$colName] = (strlen($val) == 0) ? null : $val;
+            }
+        }
+
+        $res = DB::table($this->table)
+            ->where('id',$params['cols']['id'])
+            ->update($dataUpdate);
+
+        return $res;
+    }
+
+    public function remove($id){
+        if(!isset($id)){
+            return null;
+        }
+
+        $res = DB::table($this->table)->where('id',$id)->update(['status' => 1]);
+
+        return $res;
+    }
 }

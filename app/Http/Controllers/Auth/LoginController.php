@@ -41,4 +41,10 @@ class LoginController extends Controller
             Session::flash('error','Tài khoản hoặc mật khẩu không chính xác');
             return redirect('login');
     }
+
+    public function logout(){
+        Auth::logout();
+
+        return redirect('login');
+    }
 }

@@ -12,10 +12,16 @@
                  <div class="form-group">
                      <label>Email</label>
                      <input class="form-control" name="email" id="email">
+                     @error('email')
+                     <p class="text-danger mt-2">{{$message}}</p>
+                     @enderror
                  </div>
                  <div class="form-group">
                      <label>Mật khẩu</label>
                      <input class="form-control" name="password" id="password">
+                     @error('password')
+                     <p class="text-danger mt-2">{{$message}}</p>
+                     @enderror
                  </div>
                  <div class="form-group">
                      <label>Xác nhận mật khẩu</label>
@@ -24,10 +30,16 @@
                  <div class="form-group">
                      <label>Họ Tên</label>
                      <input class="form-control" name="name" id="name">
+                     @error('name')
+                     <p class="text-danger mt-2">{{$message}}</p>
+                     @enderror
                  </div>
                  <div class="form-group">
                      <label>Địa chỉ</label>
                      <input class="form-control" name="address" id="address">
+                     @error('address')
+                     <p class="text-danger mt-2">{{$message}}</p>
+                     @enderror
                  </div>
                  <div class="form-group">
                      <label>Chức vụ</label>
@@ -39,6 +51,9 @@
                  <div class="form-group">
                      <label class="mb-2 font-bold my-2">Ảnh đại diện</label>
                      <input type="file" class="form-control" id="img" name="img">
+                     @error('img')
+                     <p class="text-danger mt-2">{{$message}}</p>
+                     @enderror
                  </div>
                  <button class="btn btn-primary">Thêm mới</button>
              </form>

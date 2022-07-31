@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use mysql_xdevapi\CollectionModify;
 
 class Product extends Model
 {
@@ -16,8 +17,8 @@ class Product extends Model
 
     protected $fillable = ['id','SKU','product_name','price','short_desc','img','sizes','colors','desc','weight','dimensions','materials','tag','photo_gallery',
         'in_stock'];
-    public function loadListWithPagers($prams = []){
-        $query = Product::with('category')->where('status','=',0)->orderBy('id','desc')->paginate(16);
+    public function loadListWithPagers($prams = [],$pagi){
+        $query = Product::with('category')->where('status','=',0)->orderBy('id','desc')->paginate($pagi);
 
         return $query;
     }
@@ -52,6 +53,39 @@ class Product extends Model
             ->where('status','=',0)
             ->where('id','!=',$id)
             ->get();
+
+        return $res;
+    }
+
+    public function saveUpdate($params){
+        $dataUpdate = [];
+        if(empty($params['cols']['id'])){
+            return null;
+        }
+
+        foreach ($params['cols'] as $colName => $val){
+            if ($colName == 'id'){
+                continue;
+            }
+
+            if (in_array($colName,$this->fillable)){
+                $dataUpdate[$colName] = (strlen($val) == 0) ? null : $val;
+            }
+        }
+
+        $res = DB::table($this->table)
+            ->where('id',$params['cols']['id'])
+            ->update($dataUpdate);
+
+        return $res;
+    }
+
+    public function remove($id){
+        if (empty($id)){
+            return null;
+        }
+
+        $res = DB::table($this->table)->where('id',$id)->update(['status' => 1]);
 
         return $res;
     }

@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Mazer Admin Dashboard</title>
+    <title>Trang quản trị</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     @include('admin.layouts._css')
-    <link rel="shortcut icon" href="{{asset('templates/admin/images/favicon.svg')}}" type="image/x-icon">
+    <link rel="icon" type="image/png" href="{{asset('client/images/icons/favicon.png')}}"/>
 </head>
 
 <body>

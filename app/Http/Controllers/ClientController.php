@@ -24,13 +24,13 @@ class ClientController extends Controller
         $this->v['banners'] = $bannerModel->getAll();
 
         $productModel = new Product();
-        $this->v['products'] = $productModel->loadListWithPagers();
+        $this->v['products'] = $productModel->loadListWithPagers([],13);
         return view('client.home.index',$this->v);
     }
 
     public function shop(Request $request){
         $productModel = new Product();
-        $this->v['products'] = $productModel->loadListWithPagers();
+        $this->v['products'] = $productModel->loadListWithPagers([],13);
         return view('client.shop',$this->v);
     }
 
@@ -39,5 +39,17 @@ class ClientController extends Controller
         $this->v['product'] = $productModel->getProduct($id);
       $this->v['products'] = $productModel->getProductByCategory($this->v['product']->category_id,$this->v['product']->id);
         return view('client.product_detail',$this->v);
+    }
+
+    public function getContact(){
+        return view('client.contact',$this->v);
+    }
+
+    public function getblog(){
+        return view('client.blog',$this->v);
+    }
+
+    public function getAbout(){
+        return view('client.about',$this->v);
     }
 }

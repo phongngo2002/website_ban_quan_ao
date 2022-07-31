@@ -19,8 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','App\Http\Controllers\ClientController@index');
 Route::get('/shop','App\Http\Controllers\ClientController@shop');
 Route::get('/product/{id}','App\Http\Controllers\ClientController@detail');
+Route::get('/contact','App\Http\Controllers\ClientController@getContact');
+Route::get('/blog','App\Http\Controllers\ClientController@getblog');
+Route::get('/about','App\Http\Controllers\ClientController@getAbout');
 Route::get('/login',['as' => 'login','uses' =>'\App\Http\Controllers\Auth\LoginController@getLogin']);
 Route::post('/login',['as' => 'login','uses' =>'\App\Http\Controllers\Auth\LoginController@postLogin']);
+Route::get('/logout',['as' => 'logout','uses' =>'\App\Http\Controllers\Auth\LoginController@logout']);
 
 Route::middleware(['auth'])->group(function (){
     Route::controller(\App\Http\Controllers\CategoryController::class)->group(function () {
@@ -28,30 +32,40 @@ Route::middleware(['auth'])->group(function (){
         Route::get('/categories/create','create');
         Route::post('/categories/create','save_create');
         Route::get('/categories/edit/{id}','update');
+        Route::post('/categories/edit/{id}','save_update');
+        Route::post('/categories/delete/{id}','delete');
     });
     Route::controller(\App\Http\Controllers\VoucherController::class)->group(function () {
         Route::get('/vouchers','index');
         Route::get('/vouchers/create','create');
         Route::post('/vouchers/create','save_create');
         Route::get('/vouchers/edit/{id}','update');
+        Route::post('/vouchers/edit/{id}','save_update');
+        Route::post('/vouchers/delete/{id}','delete');
     });
     Route::controller(\App\Http\Controllers\BannerController::class)->group(function () {
         Route::get('/banners','index');
         Route::get('/banners/create','create');
         Route::post('/banners/create','save_create');
         Route::get('/banners/edit/{id}','update');
+        Route::post('/banners/edit/{id}','save_update');
+        Route::post('/banners/delete/{id}','delete');
     });
     Route::controller(\App\Http\Controllers\UserController::class)->group(function () {
         Route::get('/users','index');
         Route::get('/users/create','create');
         Route::post('/users/create','save_create');
         Route::get('/users/edit/{id}','update');
+        Route::post('/users/edit/{id}','save_update');
+        Route::post('/users/delete/{id}','delete');
     });
     Route::controller(\App\Http\Controllers\ProductController::class)->group(function () {
         Route::get('/products','index');
         Route::get('/products/create','create');
         Route::post('/products/create','save_create');
         Route::get('/products/edit/{id}','update');
+        Route::post('/products/edit/{id}','save_update');
+        Route::post('/products/delete/{id}','delete');
     });
     Route::controller(\App\Http\Controllers\OrderController::class)->group(function () {
         Route::get('/orders','index');

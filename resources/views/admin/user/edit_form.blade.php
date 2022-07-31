@@ -9,14 +9,20 @@
             <div class="col-8 shadow-sm bg-white rounded-2 p-4">
                 <form action="" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" value="{{asset('storage/images/users'.$user->avatar)}}" id="oldImg">
+                    <input type="hidden" value="{{asset('storage/images/users/'.$user->avatar)}}" id="oldImg">
                     <div class="form-group">
                         <label>Email</label>
                         <input class="form-control" name="email" id="email" value="{{$user->email}}">
+                        @error('email')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Mật khẩu</label>
                         <input class="form-control" type="password" name="password" id="password" value="{{$user->password}}" autocomplete>
+                        @error('password')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Xác nhận mật khẩu</label>
@@ -25,10 +31,16 @@
                     <div class="form-group">
                         <label>Họ Tên</label>
                         <input class="form-control" name="name" id="name" value="{{$user->name}}">
+                        @error('name')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Địa chỉ</label>
                         <input class="form-control" name="address" id="address" value="{{$user->address}}">
+                        @error('address')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Chức vụ</label>
@@ -41,7 +53,7 @@
                         <label class="mb-2 font-bold my-2">Ảnh đại diện</label>
                         <input type="file" class="form-control" id="img" name="img">
                     </div>
-                    <button class="btn btn-primary">Thêm mới</button>
+                    <button class="btn btn-primary">Lưu</button>
                     <button class="btn btn-success" type="button" id="btnReset">Reset</button>
                 </form>
             </div>

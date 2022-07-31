@@ -11,22 +11,37 @@
                     <div class="form-group">
                         <label>Mã giảm giá</label>
                         <input class="form-control input" name="code" id="code">
+                        @error('code')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Giảm giá(%)</label>
                         <input class="form-control input" name="discount" id="discount">
+                        @error('discount')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Tiêu đề</label>
                         <input class="form-control input" name="title" id="title">
+                        @error('title')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Thời gian bắt đầu</label>
                         <input class="form-control input" type="datetime-local" id="start_time" name="start_time">
+                        @error('start_time')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Thời gian kết thúc</label>
                         <input class="form-control input" type="datetime-local" id="end_time" name="end_time">
+                        @error('end_time')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                     <button class="btn btn-primary">Lưu</button>
                     <button class="btn btn-success" type="button" id="btnReset">Reset</button>
@@ -50,7 +65,24 @@
 
 
 
-
+{{--        <div id="editor"></div>--}}
     </section>
     <script src="{{asset('js/admin/voucher/add_form.js')}}"></script>
+{{--    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>--}}
+{{--    <script src="https://cdn.ckbox.io/CKBox/1.1.0/ckbox.js"></script>--}}
+{{--    <script>--}}
+{{--        ClassicEditor--}}
+{{--            .create( document.querySelector( '#editor' ), {--}}
+{{--                ckbox: {--}}
+{{--                    tokenUrl: 'https://90989.cke-cs.com/token/dev/QCd4rJVdBKZbGfPnWeqajbRSUQaFnRlFbFaN?limit=10',--}}
+{{--                },--}}
+{{--                toolbar: [--}}
+{{--                    'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',--}}
+{{--                    'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'--}}
+{{--                ],--}}
+{{--            } )--}}
+{{--            .catch( error => {--}}
+{{--                console.error( error );--}}
+{{--            } );--}}
+{{--    </script>--}}
 @endsection

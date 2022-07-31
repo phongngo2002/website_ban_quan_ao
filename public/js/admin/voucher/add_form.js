@@ -1,3 +1,5 @@
+
+
 const inputs = document.querySelectorAll('.input');
 console.log(inputs);
 const previews = document.querySelectorAll('.preview');
@@ -51,7 +53,7 @@ inputs[3].addEventListener('change',()=>{
         return;
     }
     const date = new Date(inputs[3].value);
-    start_time = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
+    start_time = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
     renderDate(start_time,end_time);
 });
 inputs[4].addEventListener('change',()=>{
@@ -60,6 +62,7 @@ inputs[4].addEventListener('change',()=>{
         return;
     }
     const date = new Date(inputs[4].value);
-    end_time = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
+    end_time = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
     renderDate(start_time,end_time);
 });
+
