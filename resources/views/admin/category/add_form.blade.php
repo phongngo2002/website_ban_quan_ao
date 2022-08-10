@@ -3,7 +3,6 @@
 @section('title','Thêm mới danh mục');
 
 @section('content')
-    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
 
     <style>
         .upload-btn-wrapper {
@@ -50,9 +49,6 @@
                             <p class="text-danger mt-2">{{$message}}</p>
                             @enderror
                         </div>
-                        <div>
-                            <input type="file" id="test" />
-                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary mt-2">Đăng</button>
                 </form>
@@ -74,18 +70,11 @@
         </div>
 
 
-
-        <!-- Load FilePond library -->
-
-
-        <!-- Turn all file input elements into ponds -->
     </section>
-    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
     <script !src="">
         const inputElement = document.querySelector('#test');
 
         // Create a FilePond instance
-        const pond = FilePond.create(inputElement);
         const title = document.getElementById('title');
         const img = document.getElementById('img');
         const previewTitle = document.getElementById('previewTitle');

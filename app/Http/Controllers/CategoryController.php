@@ -34,7 +34,6 @@ class CategoryController extends Controller
 
     public function save_create(CategoryRequest $request)
     {
-        dd(1);
         $prams = [];
         $prams['cols'] = array_map(function ($item) {
             if ($item == '') {

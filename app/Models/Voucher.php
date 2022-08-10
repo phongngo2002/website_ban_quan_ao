@@ -76,4 +76,10 @@ class Voucher extends Model
         $res = DB::table($this->table)->where('id',$id)->update(['status' => 1]);
         return $res;
     }
+
+    public function getVoucherByCode($code){
+        $res = DB::table($this->table)->select($this->fillable)->where('code',$code)->where('status','=',0)->where('end_time','>',Date::now())->first();
+
+        return $res;
+    }
 }

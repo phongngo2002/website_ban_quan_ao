@@ -16,7 +16,7 @@ class Product extends Model
     protected $table = 'products';
 
     protected $fillable = ['id','SKU','product_name','price','short_desc','img','sizes','colors','desc','weight','dimensions','materials','tag','photo_gallery',
-        'in_stock'];
+        'in_stock','category_id'];
     public function loadListWithPagers($prams = [],$pagi){
         $query = Product::with('category')->where('status','=',0)->orderBy('id','desc')->paginate($pagi);
 

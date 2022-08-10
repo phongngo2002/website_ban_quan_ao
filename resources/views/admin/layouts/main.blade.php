@@ -30,6 +30,7 @@
     </div>
 </div>
     @include('admin.layouts._script')
+
 </body>
 
 </html>

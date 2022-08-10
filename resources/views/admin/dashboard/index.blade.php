@@ -3,6 +3,12 @@
 @section('title','Dashboard');
 
 @section('content')
+   @if(\Illuminate\Support\Facades\Session::has('message'))
+       <div class="alert alert-danger alert-dismissible show fade">
+           Bạn không được cấp quyền để sử dụng chức năng này.Vui lòng liên hệ quản trị viên để biết thêm thông tin.
+           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+   @endif
     <section class="row">
         <div class="col-12 col-lg-12" style="padding-bottom: 580px">
             <div class="row">

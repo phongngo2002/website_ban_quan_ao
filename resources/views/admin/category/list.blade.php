@@ -85,12 +85,13 @@
         </div>
     </section>
     <script !src="">
-        const alertEle = document.getElementById('alert');
-        if (alertEle) {
-            setTimeout(function () {
-                alertEle.style.display = 'none';
-            }, 2000)
-        }
+        const alertEle = document.querySelectorAll('.alert');
+      alertEle.forEach(item => {
+          setTimeout(function () {
+              item.style.display = 'none';
+          }, 2000)
+      });
+
 
     </script>
 @endsection

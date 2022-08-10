@@ -82,6 +82,7 @@ class ProductController extends Controller
 
     public function save_update($id,ProductRequest $request){
         $params = [];
+        $photo_gallery = [];
         $params['cols'] = array_map(function ($item){
             if($item == ''){
                 $item = null;
@@ -110,7 +111,6 @@ class ProductController extends Controller
         $model = new Product();
 
         $res = $model->saveUpdate($params);
-
         if($res == null){
             return redirect('products/edit/'.$id);
         }

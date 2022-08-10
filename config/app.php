@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -195,8 +195,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
-
+        Barryvdh\DomPDF\ServiceProvider::class,
+        Srmklive\PayPal\Providers\PayPalServiceProvider::class
     ],
 
     /*
@@ -213,6 +213,9 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+        'PayPal' => Srmklive\PayPal\Facades\PayPal::class
+
     ])->toArray(),
 
 ];

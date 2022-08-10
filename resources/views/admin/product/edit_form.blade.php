@@ -40,6 +40,9 @@
                         <input class="form-control" placeholder="Tên sản phẩm" name="product_name" id="product_name"
                                value="{{$product->product_name}}">
                     </div>
+                    @error('product_name')
+                    <p class="text-danger mt-2">{{$message}}</p>
+                    @enderror
                     <div class="form-group shadow-sm">
                         <section class="section">
                             <div class="card">
@@ -47,13 +50,15 @@
                                     <h4 class="card-title">Mô tả chi tiết</h4>
                                 </div>
                                 <div class="card-body">
-                                    <textarea class="form-control" rows="15" cols="15" name="desc"
+                                    <textarea class="form-control" rows="8" cols="15" name="desc"
                                               id="desc">{{$product->desc}}</textarea>
                                 </div>
                             </div>
                         </section>
                     </div>
-
+                    @error('desc')
+                    <p class="text-danger mt-2">{{$message}}</p>
+                    @enderror
                     <div class="row">
                         <div class="form-group ">
                             <label>Dữ liệu sản phẩm</label>
@@ -88,6 +93,9 @@
                                                                    value="{{$product->price}}">
                                                         </div>
                                                     </div>
+                                                    @error('price')
+                                                    <p class="text-danger mt-2">{{$message}}</p>
+                                                    @enderror
                                                 </div>
                                                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
                                                      aria-labelledby="v-pills-profile-tab">
@@ -98,6 +106,9 @@
                                                                    value="{{$product->SKU}}">
                                                         </div>
                                                     </div>
+                                                    @error('SKU')
+                                                    <p class="text-danger mt-2">{{$message}}</p>
+                                                    @enderror
                                                     <div class="form-group row">
                                                         <label class="col-2">Số hàng trong kho</label>
                                                         <div class="col-10">
@@ -105,6 +116,9 @@
                                                                    value="{{$product->in_stock}}">
                                                         </div>
                                                     </div>
+                                                    @error('in_stock')
+                                                    <p class="text-danger mt-2">{{$message}}</p>
+                                                    @enderror
                                                 </div>
                                                 <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
                                                      aria-labelledby="v-pills-messages-tab">
@@ -115,6 +129,9 @@
                                                                    value="{{$product->weight}}">
                                                         </div>
                                                     </div>
+                                                    @error('weight')
+                                                    <p class="text-danger mt-2">{{$message}}</p>
+                                                    @enderror
                                                     <div class="form-group row">
                                                         <label class="col-2">Kích thước</label>
                                                         <div class="col-10">
@@ -137,6 +154,9 @@
 
                                                         </div>
                                                     </div>
+                                                    @error('dimensions')
+                                                    <p class="text-danger mt-2">{{$message}}</p>
+                                                    @enderror
                                                 </div>
                                                 <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
                                                      aria-labelledby="v-pills-settings-tab">
@@ -159,13 +179,14 @@
                                                         </div>
 
                                                     </div>
-
+                                                    @error('colors')
+                                                    <p class="text-danger mt-2">{{$message}}</p>
+                                                    @enderror
                                                     <h6 id="title-ul" class="mt-4"></h6>
-                                                    <ul class="list-group mt-2 mb-4" id="preview"
-                                                        style="max-height: 150px;overflow-x:hidden;overflow-y:auto ">
-
-
-                                                    </ul>
+                                                    <div
+                                                        style="display: grid;grid-template-columns: repeat(4,1fr);max-height: 150px;overflow-y: auto;overflow-x:hidden "
+                                                        id="preview" class="mb-2">
+                                                    </div>
                                                     <div class="form-group">
                                                         <input type="hidden" name="sizes" id="sizes"
                                                                value="{{$product->sizes}}">
@@ -187,6 +208,9 @@
                                                             style="display: grid;grid-template-columns: repeat(4,1fr);max-height: 150px;overflow-y: auto;overflow-x:hidden "
                                                             id="previewSize" class="mb-2">
                                                         </div>
+                                                        @error('sizes')
+                                                        <p class="text-danger mt-2">{{$message}}</p>
+                                                        @enderror
                                                         <div class="form-group row mt-4">
                                                             <label class="col-2">Chất liệu</label>
                                                             <div class="col-10">
@@ -194,6 +218,9 @@
                                                                        id="materials" value="{{$product->materials}}">
                                                             </div>
                                                         </div>
+                                                        @error('materials')
+                                                        <p class="text-danger mt-2">{{$message}}</p>
+                                                        @enderror
                                                     </div>
 
 
@@ -209,6 +236,9 @@
                             <textarea class="form-control" rows="10" cols="15" name="short_desc"
                                       id="short_desc">{{$product->short_desc}}</textarea>
                         </div>
+                        @error('short_desc')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                 </div>
                 <div class="col-3">
@@ -221,7 +251,7 @@
                             <select class="form-control my-4" name="category_id" id="category_id">
                                 @foreach($categories as $c)
                                     <option value="{{$c->id}}"
-                                            selected="{{$c->id == $product->category_id}}">{{$c->title}}</option>
+                                           {{$c->id == $product->category_id ? 'selected' : ''}}>{{$c->title}}</option>
                                 @endforeach
                             </select>
                         </section>
@@ -245,8 +275,8 @@
                         <section class="card ms-3 shadow-sm border-2 border-dark row py-2">
                             <label class="mb-2 font-bold my-2">Ảnh sản phẩm</label>
                             <div class="upload-btn-wrapper row">
-                                <img src="{{asset('storage/images/products/'.$product->img)}}" id="previewMainImg"
-                                     style="display: block" class="img-thumbnail">
+                                <img src="{{asset('storage/images/products/'.$product->img)}}" class="img-thumbnail" id="previewMainImg"
+                                     style="display: block">
 
                                 <button class="btnUpload btn btn-link" type="button" id="btnAddMainImg">Thiết lập ảnh
                                     sản phẩm
@@ -259,7 +289,7 @@
                         </section>
                         <section class="card ms-3 shadow-sm border-2 border-dark row py-2">
                             <div>
-                                <label class="mb-2 font-bold my-2" style="float: left">Album hình ảnh sản phẩm</label>
+                                <label class="mb-2 font-bold my-2 " style="float: left">Album hình ảnh sản phẩm</label>
                                 <button class="btn text-danger" style="float: right;display: none" id="btnNone"
                                         type="button">Bỏ chọn
                                 </button>
@@ -267,15 +297,18 @@
                             <div class="upload-btn-wrapper row">
                                 <input type="hidden" value="{{$product->photo_gallery}}" id="photo_gallery">
                                 <div id="previewImgs"
-                                     style="display: flex;flex-wrap: nowrap;overflow-x: auto;-webkit-overflow-scrolling: touch;-ms-overflow-style: -ms-autohiding-scrollbar;">
+                                    class="row">
 
                                 </div>
 
-                                <button class="btnUploads btn btn-link" type="button" id="btnAddMainImgMore">Thêm ảnh
-                                    thư viện sản phẩm
-                                </button>
-                                <p id="imgLength" class="text-center"></p>
-                                <input type="file" name="photo_gallery[]" id="imgs" multiple/>
+                                <div class="text-center">
+                                    <button class="btnUploads btn btn-link" type="button" id="btnAddMainImgMore">Thêm
+                                        ảnh
+                                        thư viện sản phẩm
+                                    </button>
+                                    <p id="imgLength" class="text-center"></p>
+                                    <input type="file" name="photo_gallery[]" class="file" id="imgs" multiple max=""/>
+                                </div>
                             </div>
                         </section>
                     </div>

@@ -18,15 +18,15 @@
                  </div>
                  <div class="form-group">
                      <label>Mật khẩu</label>
-                     <input class="form-control" name="password" id="password">
+                     <input type="password" class="form-control" name="password" id="password">
                      @error('password')
                      <p class="text-danger mt-2">{{$message}}</p>
                      @enderror
                  </div>
-                 <div class="form-group">
-                     <label>Xác nhận mật khẩu</label>
-                     <input class="form-control">
-                 </div>
+{{--                 <div class="form-group">--}}
+{{--                     <label>Xác nhận mật khẩu</label>--}}
+{{--                     <input class="form-control">--}}
+{{--                 </div>--}}
                  <div class="form-group">
                      <label>Họ Tên</label>
                      <input class="form-control" name="name" id="name">

@@ -98,7 +98,6 @@
 
             $('.sub-menu-m').each(function () {
                 if ($(this).css('display') == 'block') {
-                    console.log('hello');
                     $(this).css('display', 'none');
                     $(arrowMainMenu).removeClass('turn-arrow-main-menu-m');
                 }
@@ -211,15 +210,139 @@
 
     /*==================================================================
     [ +/- num product ]*/
-    $('.btn-num-product-down').on('click', function () {
-        var numProduct = Number($(this).next().val());
-        if (numProduct > 0) $(this).next().val(numProduct - 1);
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+
+    function sumTotal() {
+        const totalPrice = document.querySelectorAll('.total');
+        const numProduct = document.querySelectorAll('.cartQuantity');
+
+        let sum = 0;
+        let quantity = 0;
+        totalPrice.forEach(item => {
+            const {total} = item.dataset;
+            sum += Number(total);
+        });
+        numProduct.forEach(item => {
+            quantity += Number(item.innerHTML);
+        })
+        $('.totalPrice1').html(`${numberWithCommas(sum)} VNĐ`);
+        $('.one').html(`${numberWithCommas(sum + 13000)} VNĐ`);
+        $('#totalPrice').val(sum);
+        $('#totalQuantity').val(quantity);
+        var discount = Number($('#discount').val());
+        $('#saveChange').attr('value', 'false');
+        if (discount > 0) {
+            $('.totalPrice1').html(`${numberWithCommas(sum)}`);
+            $('.delPrice').html(`${numberWithCommas(sum - sum * (discount / 100))} VNĐ`);
+            $('.totalPrice3').html(`${numberWithCommas(sum - sum * (discount / 100) + 13000)} VNĐ`);
+        }
+    }
+
+    $('#btnOnChange').on('click', function () {
+        var check = $('#saveChange').val();
+        var confirm = null;
+        if (check == 'false') {
+            confirm = window.confirm('Bạn lưu thay đổi gió hàng.Bạn có muốn tiếp tục không ?')
+            if (confirm) {
+                $('#form-check-out').submit();
+            }
+        } else {
+            $('#form-check-out').submit();
+        }
+    });
+    $('#btnCancel').on('click', function () {
+        const input = document.createElement('input');
+        input.setAttribute('name', 'cancelVoucher');
+        input.value = 'true';
+        input.type = 'hidden';
+        $('#form').append(input);
+        let ele = document.querySelectorAll('.halo');
+        for (let i = 0; i < ele.length; i++) {
+            let data1 = [];
+            let quantity = 0;
+            document.querySelectorAll(`.quantity${i + 1}`).forEach((item => {
+                quantity += Number(item.value);
+                data1.push(Number(item.value));
+            }));
+            document.querySelector(`.num-product${i + 1}`).value = JSON.stringify(data1);
+        }
+        $('#form').submit();
     });
 
-    $('.btn-num-product-up').on('click', function () {
-        var numProduct = Number($(this).prev().val());
-        $(this).prev().val(numProduct + 1);
+    $('.btn-num-product-down').on('click', function () {
+
+        var index = Number($(this).data('id'));
+        if (index) {
+            var ele = $('.price')[index - 1];
+        }
+        var numProduct = Number($(this).next().val());
+        if (ele) {
+            var {price} = ele.dataset;
+        }
+        $(this).next().val(numProduct - 1);
+
+        if (numProduct > 0 && index) {
+            let quantity = 0;
+            let data1 = [];
+            document.querySelectorAll(`.quantity${index}`).forEach((item => {
+                quantity += Number(item.value);
+                data1.push(Number(item.value));
+            }));
+            document.querySelector(`.num-product${index}`).value = JSON.stringify(data1);
+            document.querySelectorAll('.total')[index - 1].innerText = `${numberWithCommas(Number(price) * quantity)} VNĐ`;
+            document.querySelectorAll('.total')[index - 1].setAttribute('data-total', Number(price) * quantity);
+            document.querySelectorAll('.cartQuantity')[index - 1].innerText = quantity;
+
+        }
+        sumTotal();
+        ;
     });
+    $('.btnSub').on('click', function () {
+        let ele = document.querySelectorAll('.halo');
+        for (let i = 0; i < ele.length; i++) {
+            let data1 = [];
+            let quantity = 0;
+            document.querySelectorAll(`.quantity${i + 1}`).forEach((item => {
+                quantity += Number(item.value);
+                data1.push(item.value);
+            }));
+            document.querySelector(`.num-product${i + 1}`).value = JSON.stringify(data1);
+        }
+        $('#form').submit();
+    });
+    $('.one1').on('focus', function () {
+        $(this).next().css('display', 'none');
+    });
+    $('.btn-num-product-up').on('click', function () {
+            var index = Number($(this).data('id'));
+            var numProduct = Number($(this).prev().val());
+            if (index) {
+                var ele = $('.price')[index - 1];
+            }
+            $(this).prev().val(numProduct + 1);
+            if (ele) {
+                var {price} = ele.dataset;
+            }
+
+            if (index && price) {
+                let data = [];
+                let quantity = 0;
+                document.querySelectorAll(`.quantity${index}`).forEach((item => {
+                    quantity += Number(item.value);
+                    data.push(item.value);
+                }));
+                document.querySelector(`.num-product${index}`).value = JSON.stringify(data);
+                document.querySelectorAll('.cartQuantity')[index - 1].innerText = quantity;
+                document.querySelectorAll('.total')[index - 1].innerText = `${numberWithCommas(Number(price) * quantity)} VNĐ`;
+                document.querySelectorAll('.total')[index - 1].setAttribute('data-total', Number(price) * quantity);
+
+            }
+            sumTotal();
+        }
+    )
+    ;
 
     /*==================================================================
     [ Rating ]*/

@@ -45,6 +45,8 @@
                         </p>
 
                         <!--  -->
+                        <form action="{{url('/add-cart/'.$product->id)}}" method="post">
+                            @csrf
                         <div class="p-t-33">
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-203 flex-c-m respon6">
@@ -53,7 +55,7 @@
 
                                 <div class="size-204 respon6-next">
                                     <div class="rs1-select2 bor8 bg0">
-                                        <select class="js-select2" name="time">
+                                        <select class="js-select2" name="size{{$product->id}}" id="size{{$product->id}}">
                                             <option>Lựa chọn kích cỡ muốn mua</option>
                                           @foreach(json_decode($product->sizes) as $s)
                                                 <option>Size {{strtoupper($s)}}</option>
@@ -71,7 +73,7 @@
 
                                 <div class="size-204 respon6-next">
                                     <div class="rs1-select2 bor8 bg0">
-                                        <select class="js-select2" name="time">
+                                        <select class="js-select2" name="color{{$product->id}}" id="color{{$product->id}}">
                                             <option>Lựa chọn màu muốn mua</option>
                                             @foreach(json_decode($product->colors) as $s)
                                                 <option>{{$s}}</option>
@@ -89,7 +91,7 @@
                                             <i class="fs-16 zmdi zmdi-minus"></i>
                                         </div>
 
-                                        <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
+                                        <input class="text-104 cl3 txt-center num-product" type="number" name="quantity{{$product->id}}" id="quantity{{$product->id}}" value="1">
 
                                         <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
                                             <i class="fs-16 zmdi zmdi-plus"></i>
@@ -102,7 +104,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        </form>
                         <!--  -->
                         <div class="flex-w flex-m p-l-100 p-t-40 respon7">
                             <div class="flex-m bor9 p-r-10 m-r-11">

@@ -47,6 +47,8 @@
                             </p>
 
                             <!--  -->
+                            <form action="{{url('/add-cart/'.$a->id)}}" method="post">
+                                @csrf
                             <div class="p-t-33">
                                 <div class="flex-w flex-r-m p-b-10">
                                     <div class="size-203 flex-c-m respon6">
@@ -55,10 +57,10 @@
 
                                     <div class="size-204 respon6-next">
                                         <div class="rs1-select2 bor8 bg0">
-                                            <select class="js-select2" name="time">
+                                            <select class="js-select2" name="size{{$a->id}}" id="size{{$a->id}}">
                                                 <option>Lựa chọn kích cỡ muốn mua</option>
                                                 @foreach(json_decode($a->sizes) as $s)
-                                                    <option>Size {{strtoupper($s)}}</option>
+                                                    <option value="{{$s}}">Size {{strtoupper($s)}}</option>
                                                 @endforeach
                                             </select>
                                             <div class="dropDownSelect2"></div>
@@ -72,7 +74,7 @@
 
                                     <div class="size-204 respon6-next">
                                         <div class="rs1-select2 bor8 bg0">
-                                            <select class="js-select2" name="time">
+                                            <select class="js-select2" name="color{{$a->id}}" id="color{{$a->id}}">
                                                 <option>Lựa chọn màu muốn mua</option>
                                                 @foreach(json_decode($a->colors) as $c)
                                                     <option>{{$c}}</option>
@@ -90,20 +92,20 @@
                                                 <i class="fs-16 zmdi zmdi-minus"></i>
                                             </div>
 
-                                            <input class="text-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
+                                            <input class="text-104 cl3 txt-center num-product" type="number" name="quantity{{$a->id}}" id="quantity{{$a->id}}" value="1">
 
                                             <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
                                                 <i class="fs-16 zmdi zmdi-plus"></i>
                                             </div>
                                         </div>
 
-                                        <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                        <button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                             Thêm vào giỏ hàng
                                         </button>
                                     </div>
                                 </div>
                             </div>
-
+                            </form>
                             <!--  -->
                             <div class="flex-w flex-m p-l-100 p-t-40 respon7">
                                 <div class="flex-m bor9 p-r-10 m-r-11">
@@ -113,15 +115,15 @@
                                 </div>
 
                                 <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
-                                    <i class="fa fa-facebook"></i>
+                                    <i class="fa-brands fa-facebook"></i>
                                 </a>
 
                                 <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
-                                    <i class="fa fa-twitter"></i>
+                                    <i class="fa-brands fa-twitter"></i>
                                 </a>
 
                                 <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
-                                    <i class="fa fa-google-plus"></i>
+                                    <i class="fa-brands fa-google-plus-g"></i>
                                 </a>
                             </div>
                         </div>

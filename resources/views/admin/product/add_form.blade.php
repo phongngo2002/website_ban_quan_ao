@@ -24,7 +24,8 @@
             top: 0;
             opacity: 0;
         }
-        .removeColor:hover{
+
+        .removeColor:hover {
             color: red;
             cursor: pointer;
         }
@@ -55,7 +56,7 @@
                                     <h4 class="card-title">Mô tả chi tiết</h4>
                                 </div>
                                 <div class="card-body">
-                                  <textarea class="form-control" rows="8" cols="15" name="desc" id="desc"></textarea>
+                                    <textarea class="form-control" rows="8" cols="15" name="desc" id="desc"></textarea>
                                 </div>
                             </div>
                         </section>
@@ -138,13 +139,16 @@
                                                             <input type="hidden" name="dimensions" id="dimensions">
                                                             <div class="row">
                                                                 <div class="col-4">
-                                                                    <input class="form-control" placeholder="Dài" id="long" onchange="getInformation()">
+                                                                    <input class="form-control" placeholder="Dài"
+                                                                           id="long" onchange="getInformation()">
                                                                 </div>
                                                                 <div class="col-4">
-                                                                    <input class="form-control" placeholder="Rộng" id="width" onchange="getInformation()">
+                                                                    <input class="form-control" placeholder="Rộng"
+                                                                           id="width" onchange="getInformation()">
                                                                 </div>
                                                                 <div class="col-4">
-                                                                    <input class="form-control" placeholder="Cao" id="height" onchange="getInformation()">
+                                                                    <input class="form-control" placeholder="Cao"
+                                                                           id="height" onchange="getInformation()">
                                                                 </div>
                                                             </div>
 
@@ -166,7 +170,8 @@
                                                                        id="color_name">
                                                             </div>
                                                             <div class="col-2">
-                                                                <button class="btn btn-primary" type="button" id="btnAdd">Thêm màu
+                                                                <button class="btn btn-primary" type="button"
+                                                                        id="btnAdd">Thêm màu
                                                                 </button>
                                                             </div>
                                                         </div>
@@ -174,11 +179,10 @@
                                                     </div>
 
                                                     <h6 id="title-ul" class="mt-4"></h6>
-                                                    <ul class="list-group mt-2 mb-4" id="preview"
-                                                        style="max-height: 150px;overflow-x:hidden;overflow-y:auto ">
-
-
-                                                    </ul>
+                                                    <div
+                                                        style="display: grid;grid-template-columns: repeat(4,1fr);max-height: 150px;overflow-y: auto;overflow-x:hidden "
+                                                        id="preview" class="mb-2">
+                                                    </div>
                                                     @error('colors')
                                                     <p class="text-danger mt-2">{{$message}}</p>
                                                     @enderror
@@ -208,7 +212,8 @@
                                                         <div class="form-group row mt-4">
                                                             <label class="col-2">Chất liệu</label>
                                                             <div class="col-10">
-                                                                <input class="form-control " name="materials" id="materials">
+                                                                <input class="form-control " name="materials"
+                                                                       id="materials">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -225,7 +230,8 @@
                         </div>
                         <div class="form-group">
                             <label class="mb-2" for="short_desc">Mô tả ngắn</label>
-                              <textarea class="form-control" rows="5" cols="15" name="short_desc" id="short_desc"></textarea>
+                            <textarea class="form-control" rows="5" cols="15" name="short_desc"
+                                      id="short_desc"></textarea>
                         </div>
                         @error('short_desc')
                         <p class="text-danger mt-2">{{$message}}</p>
@@ -235,12 +241,12 @@
                 <div class="col-3">
                     <div class="row">
                         <section class="mb-4 ms-3 row">
-                                <button class="btn btn-primary" type="submit">Đăng</button>
+                            <button class="btn btn-primary" type="submit">Đăng</button>
                         </section>
                         <section class="card ms-3 shadow-sm border-2 border-dark row">
                             <label class="mb-2 font-bold my-2" for="category_id">Danh mục sản phẩm</label>
                             <select class="form-control my-4" name="category_id" id="category_id">
-                              @foreach($categories as $c)
+                                @foreach($categories as $c)
                                     <option value="{{$c->id}}">{{$c->title}}</option>
                                 @endforeach
                             </select>
@@ -273,7 +279,7 @@
                                 <button class="btnUpload btn btn-link text-danger" type="button" id="btnRemoveMainImg"
                                         style="display: none">Xóa ảnh sản phẩm
                                 </button>
-                                <input type="file" name="img" id="img" class="file" />
+                                <input type="file" name="img" id="img" class="file"/>
 
                             </div>
 
@@ -282,20 +288,24 @@
                         <p class="text-danger mt-2">{{$message}}</p>
                         @enderror
                         <section class="card ms-3 shadow-sm border-2 border-dark row py-2">
-                           <div>
-                               <label class="mb-2 font-bold my-2" style="float: left">Album hình ảnh sản phẩm</label>
-                               <button class="btn text-danger" style="float: right;display: none" id="btnNone" type="button">Bỏ chọn</button>
-                           </div>
+                            <div>
+                                <label class="mb-2 font-bold my-2 " style="float: left">Album hình ảnh sản phẩm</label>
+                                <button class="btn text-danger" style="float: right;display: none" id="btnNone"
+                                        type="button">Bỏ chọn
+                                </button>
+                            </div>
                             <div class="upload-btn-wrapper row">
-                                <div id="previewImgs" class="row">
+                                <div id="previewImgs" class="row text-center">
 
                                 </div>
-
-                                <button class="btnUploads btn btn-link" type="button" id="btnAddMainImgMore">Thêm ảnh
-                                    thư viện sản phẩm
-                                </button>
-                                <p id="imgLength" class="text-center"></p>
-                                <input type="file" name="photo_gallery[]" class="file" id="imgs" multiple max="" />
+                                <div class="text-center">
+                                    <button class="btnUploads btn btn-link" type="button" id="btnAddMainImgMore">Thêm
+                                        ảnh
+                                        thư viện sản phẩm
+                                    </button>
+                                    <p id="imgLength" class="text-center"></p>
+                                    <input type="file" name="photo_gallery[]" class="file" id="imgs" multiple max=""/>
+                                </div>
                             </div>
                         </section>
                         @error('photo_gallery')
@@ -307,5 +317,5 @@
             </div>
         </form>
     </section>
-<script src="{{asset('js/add_form.js')}}"></script>
+    <script src="{{asset('js/add_form.js')}}"></script>
 @endsection

@@ -13,6 +13,7 @@
                 <th>Họ tên</th>
                 <th>Số điện thoại</th>
                 <th>Địa chỉ nhận hàng</th>
+                <th>Trạng thái</th>
                 <th></th>
             </tr>
             </thead>
@@ -26,11 +27,20 @@
                     <td>{{$a->customer_name}}</td>
                     <td>{{$a->phone_number}}</td>
                     <td>{{$a->address}}</td>
-                    <td><button class="btn btn-info"><i class="fa-solid fa-eye"></i></button>
-                       </td>
+                    <td>
+                        @if($a->status == 0)
+                            <span class="text-warning">Đơn hàng mới</span>
+                        @else
+                            <span class="text-success">Chờ thanh toán</span>
+                        @endif
+
+                    </td>
+                    <td><a class="btn btn-info" href="{{url('/orders/'.$a->id)}}"><i class="fa-solid fa-eye"></i></a>
+                    </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
+        {{$list->links()}}
     </section>
 @endsection

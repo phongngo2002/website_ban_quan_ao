@@ -11,22 +11,37 @@
                     <div class="form-group">
                         <label>Mã giảm giá</label>
                         <input class="form-control input" name="code" id="code" value="{{$voucher->code}}">
+                        @error('code')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Giảm giá(%)</label>
                         <input class="form-control input" name="discount" id="discount" value="{{$voucher->discount}}">
+                        @error('discount')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Tiêu đề</label>
                         <input class="form-control input" name="title" id="title" value="{{$voucher->title}}">
+                        @error('title')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Thời gian bắt đầu</label>
                         <input class="form-control input" type="datetime-local" id="start_time" name="start_time" value="{{$voucher->start_time}}">
+                        @error('start_time')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Thời gian kết thúc</label>
                         <input class="form-control input" type="datetime-local" id="end_time" name="end_time"  value="{{$voucher->end_time}}">
+                        @error('end_time')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
                     </div>
                     <button class="btn btn-primary">Lưu</button>
                     <button class="btn btn-success" type="button" id="btnReset">Reset</button>
@@ -59,14 +74,15 @@
         const oldTitle = inputs[2].value;
         const oldStartTime = inputs[3].value;
         const oldEndTime = inputs[4].value;
-
         function get(){
-            const start_time = new Date(oldStartTime);
-            const end_time = new Date(oldEndTime);
+            const astart_time = new Date(oldStartTime);
+            const aend_time = new Date(oldEndTime);
+            start_time = `${astart_time.getDate()}/${astart_time.getMonth()+1}/${astart_time.getFullYear()}`;
+            end_time = `${aend_time.getDate()}/${aend_time.getMonth()+1}/${aend_time.getFullYear()}`;
             previews[0].innerText = oldTitle;
             previews[1].innerText = `Thẻ giảm giá ${oldDiscount}% cho mọi sản phẩm`;
             previews[2].innerText = 'Mã code: '+oldCode;
-            previews[3].innerText = `${start_time.getDate()}/${start_time.getMonth()+1}/${start_time.getFullYear()} - ${end_time.getDate()}/${end_time.getMonth()+1}/${end_time.getFullYear()}`;
+            previews[3].innerText = `${astart_time.getDate()}/${astart_time.getMonth()+1}/${astart_time.getFullYear()} - ${aend_time.getDate()}/${aend_time.getMonth()+1}/${aend_time.getFullYear()}`;
         }
     get();
         document.getElementById('btnReset').addEventListener('click',()=>{

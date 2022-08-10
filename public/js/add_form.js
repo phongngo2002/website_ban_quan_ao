@@ -61,7 +61,7 @@ function render(data) {
     }
     for (let obj of data) {
         preview.innerHTML += `
-                <li class="list-group-item">${obj}<i class="fa-solid fa-circle-xmark m-2 removeColor" style="float: right;" data-id="${obj}"></i></li>
+<span ><i class="fa-solid fa-circle-xmark m-2 removeColor" data-id="${obj}"></i>${obj}</span>
                 `;
     }
 
@@ -158,7 +158,6 @@ document.getElementById('btnNone').addEventListener('click',function (){
     imgs.files = dt.files;
     previewImgs.innerHTML = '';
     count = 0;
-    document.getElementById('btnAddMainImgMore').style.display = 'block';
     document.getElementById('btnNone').style.display = 'none';
     document.getElementById('imgLength').innerHTML = '';
 });
@@ -168,7 +167,7 @@ function renderPhotos(data,option = 1){
       for (const file of data) {
           const src = URL.createObjectURL(file);
           previewImgs.innerHTML += `
-         <div class="col-4 mb-2"><img src="${src}" style="width: 100%;"></div>
+         <div class="col-4 mb-2"><img src="${src}" style="width: 100%;" class="img-thumbnail m-auto"></div>
         `;
           count++;
       }
@@ -177,13 +176,11 @@ function renderPhotos(data,option = 1){
           const src = file;
           const path = `http://127.0.0.1:8000/storage/images/products/${src}`;
           previewImgs.innerHTML += `
-       <div class="col-4 mb-2"><img src="${src}" style="width: 100%;"></div>
-
+       <div class="col-4 mb-2"><img src="${path}" style="width: 100%;" class="img-thumbnail m-auto"></div>
         `;
           count++;
       }
   }
-    document.getElementById('btnAddMainImgMore').style.display = 'none';
     document.getElementById('btnNone').style.display = 'block';
     document.getElementById('imgLength').innerHTML = `${count} ảnh được chọn`;
 }

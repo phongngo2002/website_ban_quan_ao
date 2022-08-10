@@ -24,11 +24,11 @@
                         <p class="text-danger mt-2">{{$message}}</p>
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <label>Xác nhận mật khẩu</label>
-                        <input class="form-control" type="text">
-                    </div>
-                    <div class="form-group">
+{{--                    <div class="form-group">--}}
+{{--                        <label>Xác nhận mật khẩu</label>--}}
+{{--                        <input class="form-control" type="text">--}}
+{{--                    </div>--}}
+                    <div class="form-group" >
                         <label>Họ Tên</label>
                         <input class="form-control" name="name" id="name" value="{{$user->name}}">
                         @error('name')
