@@ -14,7 +14,7 @@ class Order extends Model
 
     protected $table = 'orders';
 
-    protected $fillable = ['id', 'order_code', 'email', 'customer_name', 'phone_number', 'address', 'voucher_id', 'status'];
+    protected $fillable = ['id', 'order_code', 'email', 'customer_name', 'phone_number', 'address', 'voucher_id', 'status', 'total'];
 
     public function loadListWithPagers($prams = [])
     {
@@ -80,9 +80,19 @@ class Order extends Model
     public function getOrderById($id)
     {
         $res = DB::table($this->table)
-            ->select('order_code', 'email', 'customer_name', 'phone_number', 'address', 'discount', 'total', 'orders.id', 'orders.created_at')
+            ->select('order_code', 'email', 'customer_name', 'phone_number', 'address', 'discount', 'total', 'orders.id', 'orders.created_at', 'orders.status')
             ->join('vouchers', 'orders.voucher_id', '=', 'vouchers.id')
             ->where('orders.id', $id)->first();
+
+        return $res;
+    }
+
+
+    public function updatetStatusOrder($status = 0, $id)
+    {
+        $res = DB::table($this->table)
+            ->where('id', $id)
+            ->update(['status' => $status]);
 
         return $res;
     }
@@ -100,5 +110,4 @@ class Order extends Model
 
         return $res;
     }
-
 }

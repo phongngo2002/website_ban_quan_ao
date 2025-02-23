@@ -17,6 +17,9 @@ class VerifyRoleAccount
      */
     public function handle($request, Closure $next)
     {
+        if (!Auth::check()) {
+            return redirect('/');
+        }
         if (Auth::check() && Auth::user()->role_id != 0) {
             return $next($request);
         }

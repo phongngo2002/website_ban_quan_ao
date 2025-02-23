@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(\App\Http\Controllers\OrderController::class)->group(function () {
         Route::get('/orders', 'index');
         Route::get('/orders/{id}', 'getDetail');
+        Route::post('/orders/{id}', 'update')->name('orders.update');
         Route::get('/orders/printf-order/{order_id}', 'printfBill');
     });
     Route::get('/admin/dashboard', 'App\Http\Controllers\DashboardController@index');
@@ -85,4 +86,3 @@ Route::group(['middleware' => 'verfiy-role-account'], function () {
         Route::post('/products/delete/{id}', 'delete');
     });
 });
-

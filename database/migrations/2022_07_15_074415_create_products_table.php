@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('SKU');
             $table->string('product_name');
-            $table->float('price',9,2);
+            $table->float('price', 9, 2);
             $table->string('short_desc');
             $table->string('img');
             $table->string('sizes');
             $table->string('colors');
-            $table->text('desc');
+            $table->longText('desc');
             $table->string('weight');
             $table->string('dimensions');
             $table->string('materials');

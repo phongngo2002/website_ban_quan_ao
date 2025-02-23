@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('customer_name');
             $table->string('phone_number');
             $table->string('address');
+            $table->float('total', 11, 2);
             $table->integer('voucher_id');
             $table->integer('status')->default(0);
             $table->timestamps();

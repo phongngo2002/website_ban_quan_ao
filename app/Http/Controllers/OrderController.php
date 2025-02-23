@@ -33,6 +33,18 @@ class OrderController extends Controller
         return view('admin.order.detail', $this->v);
     }
 
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:0,1,2,3'
+        ]);
+        $model = new Order();
+
+        $model->updatetStatusOrder($request->status, $id);
+        return redirect()->back()->with('success', 'Cập nhật đơn hàng thành công');
+    }
+
     public function printfBill($order_id)
     {
         $model = new PrintBill();
@@ -40,5 +52,4 @@ class OrderController extends Controller
         $pdf->loadHTML($model->print_order_convert($order_id));
         return $pdf->stream();
     }
-
 }
