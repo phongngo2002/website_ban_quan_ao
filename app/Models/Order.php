@@ -80,9 +80,14 @@ class Order extends Model
     public function getOrderById($id)
     {
         $res = DB::table($this->table)
-            ->select('order_code', 'email', 'customer_name', 'phone_number', 'address', 'discount', 'total', 'orders.id', 'orders.created_at', 'orders.status')
-            ->join('vouchers', 'orders.voucher_id', '=', 'vouchers.id')
+            ->select('order_code', 'email', 'customer_name', 'phone_number', 'voucher_id', 'address', 'total', 'orders.id', 'orders.created_at', 'orders.status')
             ->where('orders.id', $id)->first();
+        $discount = DB::table('vouchers')->where('id', $res->voucher_id)->first();
+        if ($discount) {
+            $res->disount = $discount->discount;
+        } else {
+            $res->discount = 0;
+        }
 
         return $res;
     }
@@ -99,12 +104,11 @@ class Order extends Model
 
     public function getDetailInOrder($order_id)
     {
-        $res = DB::table('vouchers')
-            ->selectRaw('product_name,code,SUM(quantity) quantity,price,SUM(quantity * price) sum')
-            ->join($this->table, 'vouchers.id', '=', 'orders.voucher_id')
+        $res = DB::table($this->table)
+            ->selectRaw('product_name,SUM(quantity) quantity,price,SUM(quantity * price) sum')
             ->join('product_order_detail', 'orders.id', '=', 'product_order_detail.order_id')
             ->join('products', 'product_order_detail.product_id', '=', 'products.id')
-            ->groupBy('product_name', 'code', 'price')
+            ->groupBy('product_name', 'price')
             ->where('orders.id', $order_id)
             ->get();
 

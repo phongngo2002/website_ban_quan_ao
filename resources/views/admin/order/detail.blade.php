@@ -28,7 +28,6 @@
         <tr class="table-active">
             <th></th>
             <th>Tên sản phẩm</th>
-            <th>Mã giảm giá</th>
             <th>Số lượng</th>
             <th>Giá sản phẩm</th>
             <th>Tổng tiền</th>
@@ -37,7 +36,6 @@
         <tr class="">
             <td>{{$loop->iteration}}</td>
             <td>{{$a->product_name}}</td>
-            <td>{{$a->code == 'giamgia1' ? 'Không có' : $a->code}}</td>
             <td>{{$a->quantity}}</td>
             <td>{{number_format($a->price, 0, ',', '.')}} VNĐ</td>
             <td>{{number_format($a->sum, 0, ',', '.')}} VNĐ</td>
