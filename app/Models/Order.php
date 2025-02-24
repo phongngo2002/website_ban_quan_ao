@@ -84,7 +84,7 @@ class Order extends Model
             ->where('orders.id', $id)->first();
         $discount = DB::table('vouchers')->where('id', $res->voucher_id)->first();
         if ($discount) {
-            $res->disount = $discount->discount;
+            $res->discount  = $discount->discount;
         } else {
             $res->discount = 0;
         }
