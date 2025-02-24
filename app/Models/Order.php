@@ -73,7 +73,7 @@ class Order extends Model
             'products' => $dataMail,
             'date' => \date('Y-m-d H:i:s'),
             'total' => $carts->totalPrice,
-            'discount' => DB::table('vouchers')->where('id', $dataOrder['voucher_id'])->first()->discount
+            'discount' => DB::table('vouchers')->where('id', $dataOrder['voucher_id'] ?? 0)->first()->discount ?? 0
         ];
     }
 
